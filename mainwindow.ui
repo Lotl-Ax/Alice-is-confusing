@@ -153,11 +153,37 @@ background-color: rgb(85, 85, 127);</string>
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
+     <widget class="QCheckBox" name="T1_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Check me out</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
+     <widget class="QPushButton" name="T2_helloBttn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hello</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -167,7 +193,7 @@ background-color: rgb(85, 85, 127);</string>
      <x>0</x>
      <y>0</y>
      <width>780</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
