@@ -1,17 +1,17 @@
 import sys, time
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, \
-    QLabel, QTextBrowser, QComboBox, QListWidget, QProgressBar, QMessageBox, QDialogButtonBox
+    QLabel, QTextBrowser, QComboBox, QListWidget, QProgressBar, QMessageBox, QDialogButtonBox, QCheckBox
 from PyQt5 import uic
 from datetime import datetime
 
 TIME_LIMIT = 100
 
-class My_UI(QMainWindow): #defines class 'My_UI'
+class My_Ui(QMainWindow): #defines class 'My_UI'
 
     def __init__(self):
 
-        super(My_UI,self).__init__() # call constructor of parent class
+        super(My_Ui,self).__init__() # call constructor of parent class
         
         uic.loadUi("mainwindow.ui",self) #loads the Qtdesigner UI file
 
@@ -32,7 +32,8 @@ class My_UI(QMainWindow): #defines class 'My_UI'
         self.progBar.setValue(50)
 
         self.labelProgressComplete = self.findChild(QLabel, "lbl_progress_complete")
-        self.labelProgressComplete.setHidden(True)                                     # hide label until progress bar is full
+        self.labelProgressComplete.setHidden(True)    # hide label until progress bar is full
+
 
         """ set event handlers """
         self.buttonAdd.clicked.connect(self.add_btn_clicked)               #relates back to buttonAdd, action = clicked, result= function
@@ -128,6 +129,7 @@ class My_UI(QMainWindow): #defines class 'My_UI'
 
     def hello_message(self):
         msg = QMessageBox()
+        msg.setGeometry(900,500, 50,50)
         msg.setWindowTitle('Well hello there')
         msg.setText("Hello, how are you?")
         msg.setStandardButtons(QMessageBox.Ok)
@@ -138,6 +140,6 @@ class My_UI(QMainWindow): #defines class 'My_UI'
 
 # main starts here - init App
 app = QApplication(sys.argv)
-window = My_UI() #calls class 'My_UI'
+window = My_Ui() #calls class 'My_UI'
 app.exec_()
 sys.exit(app.exec_())
