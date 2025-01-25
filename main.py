@@ -1,17 +1,17 @@
 import sys, time
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, \
-    QLabel, QTextBrowser, QComboBox, QListWidget, QProgressBar, QMessageBox, QDialogButtonBox
+    QLabel, QTextBrowser, QComboBox, QListWidget, QProgressBar, QMessageBox, QDialogButtonBox, QCheckBox
 from PyQt5 import uic
 from datetime import datetime
 
 TIME_LIMIT = 100
 
-class My_UI(QMainWindow): #defines class 'My_UI'
+class My_Ui(QMainWindow): #defines class 'My_UI'
 
     def __init__(self):
 
-        super(My_UI,self).__init__() # call constrcutor of parent class
+        super(My_Ui,self).__init__() # call constructor of parent class
         
         uic.loadUi("mainwindow.ui",self) #loads the Qtdesigner UI file
 
@@ -24,20 +24,25 @@ class My_UI(QMainWindow): #defines class 'My_UI'
         self.listWidget  = self.findChild(QListWidget,"lst_widget")
         self.txtBrowser = self.findChild(QTextBrowser,"txt_browser_one")
         self.progBar = self.findChild(QProgressBar, "progbar_one")
+        self.buttonHello = self.findChild(QPushButton, "T2_helloBttn")
+        #self.[what  you want to call object] = self.findChild(Class, ObjectName in UI)
+
 
         self.progBar.setMaximum(100)
         self.progBar.setValue(50)
 
         self.labelProgressComplete = self.findChild(QLabel, "lbl_progress_complete")
-        self.labelProgressComplete.setHidden(True)                                     # hide label until progress bar is full
+        self.labelProgressComplete.setHidden(True)    # hide label until progress bar is full
+
 
         """ set event handlers """
-        self.buttonAdd.clicked.connect(self.add_btn_clicked)
+        self.buttonAdd.clicked.connect(self.add_btn_clicked)               #relates back to buttonAdd, action = clicked, result= function
         self.buttonDelete.clicked.connect(self.del_btn_clicked)
         self.listWidget.clicked.connect(self.listwidget_clicked)
         self.lwModel = self.listWidget.model()                             # need to pick up events on the list
         self.lwModel.rowsInserted.connect(self.checkListLength)            # Any time an element is added run function
         self.lwModel.rowsRemoved.connect(self.checkListLength)             # Any time an element is removed run function
+        self.buttonHello.clicked.connect(self.hello_message)
 
         self.show()
     
@@ -87,20 +92,20 @@ class My_UI(QMainWindow): #defines class 'My_UI'
             self.buttonAdd.setEnabled(False)
             self.labelProgressComplete.setHidden(False)                                 # show full label
             self.progBar.setEnabled(False)                                              # disable prgress bar
-            self.showCompleteMessage("Progress Complete")
+            self.showCompleteMessage("Progress Complete, brrrrrrrrr")
 
         #endif
 
     #end def
 
 
-    def showCompleteMessage(self, message_text):
+    def showCompleteMessage(self, message_text): #message_text refers to the tab title essentially
 
         msg = QMessageBox()
         msg.setStyleSheet("background-color: rgb(200, 200, 0); color rgb(255, 200, 0)")
         msg.setIcon(QMessageBox.Information)
         msg.setWindowTitle(message_text)
-        msg.setText("Have a Nice Day!")
+        msg.setText("Have a Nice Day! hiiiiiii")
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
 
@@ -122,10 +127,19 @@ class My_UI(QMainWindow): #defines class 'My_UI'
 
     #enddef
 
+    def hello_message(self):
+        msg = QMessageBox()
+        msg.setGeometry(900,500, 50,50)
+        msg.setWindowTitle('Well hello there')
+        msg.setText("Hello, how are you?")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+    #enddef
+
 #endclass
 
 # main starts here - init App
 app = QApplication(sys.argv)
-window = My_UI() #calls class 'My_UI'
+window = My_Ui() #calls class 'My_UI'
 app.exec_()
 sys.exit(app.exec_())
