@@ -26,6 +26,9 @@ class My_Ui(QMainWindow): #defines class 'My_UI'
         self.progBar = self.findChild(QProgressBar, "progbar_one")
         self.buttonHello = self.findChild(QPushButton, "T2_helloBttn")
         #self.[what  you want to call object] = self.findChild(Class, ObjectName in UI)
+        self.Combobox = self.findChild(QComboBox, "cmb_one")
+        self.TheSky = self.findChild(QLabel, "sky_label")
+        self.TheSky.setHidden(True)
 
 
         self.progBar.setMaximum(100)
@@ -43,6 +46,7 @@ class My_Ui(QMainWindow): #defines class 'My_UI'
         self.lwModel.rowsInserted.connect(self.checkListLength)            # Any time an element is added run function
         self.lwModel.rowsRemoved.connect(self.checkListLength)             # Any time an element is removed run function
         self.buttonHello.clicked.connect(self.hello_message)
+        self.Combobox.currentIndexChanged.connect(self.ComboChange)
 
         self.show()
     
@@ -136,6 +140,8 @@ class My_Ui(QMainWindow): #defines class 'My_UI'
         msg.exec_()
     #enddef
 
+    def ComboChange(self):
+        print(self.Combobox.currentIndex())
 #endclass
 
 # main starts here - init App
