@@ -51,7 +51,7 @@ class My_Ui(QMainWindow): #defines class 'My_UI'
 
     def listwidget_clicked(self):
     
-        print(self.listWidget.currentRow())
+        # print(self.listWidget.currentRow())
         if self.listWidget.count() > 0:
             self.buttonDelete.setEnabled(True) # enable delete button
         else:
