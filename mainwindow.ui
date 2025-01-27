@@ -149,7 +149,7 @@ background-color: rgb(85, 85, 127);</string>
     <property name="currentIndex">
      <number>1</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tab_1">
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
@@ -174,7 +174,7 @@ background-color: rgb(85, 85, 127);</string>
      <widget class="QPushButton" name="T2_helloBttn">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
@@ -193,7 +193,7 @@ background-color: rgb(85, 85, 127);</string>
      <x>0</x>
      <y>0</y>
      <width>780</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
